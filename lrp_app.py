@@ -3,7 +3,8 @@ import time
 import requests
 import streamlit as st
 import streamlit.components.v1 as components
-from pyngrok import ngrok
+#from pyngrok import ngrok
+import ngrok
 # --------------------------------------------------------------------------------
 
 API_HOST='127.0.0.1'
@@ -35,7 +36,7 @@ def main():
             
             ngrok.kill()
             #ngrok.set_auth_token("2WWKkSig9YblMixh3X5FY3xURA6_3PSnkEj9KJTUvott43EWP")
-            tunnel = ngrok.connect(addr=API_BASE_URL)#, domain=STATIC_PUBLIC_URL)
+            tunnel = ngrok.connect(API_BASE_URL)#, domain=STATIC_PUBLIC_URL)
             print(tunnel.public_url)
     
 
