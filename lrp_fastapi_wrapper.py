@@ -11,7 +11,7 @@ from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
-CORS_ALLOW_ORIGINS=['http://localhost', 'http://localhost:5000', 'http://localhost:8765', 'http://127.0.0.1:5000']
+CORS_ALLOW_ORIGINS=['http://localhost', 'http://localhost:5000', 'http://localhost:8765', 'http://127.0.0.1:5000', 'https://quizbit.streamlit.app/']
 
 class FastAPI_Wrapper(FastAPI):
 
