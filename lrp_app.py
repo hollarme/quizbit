@@ -36,7 +36,7 @@ def main():
             
             ngrok.kill()
             #ngrok.set_auth_token("2WWKkSig9YblMixh3X5FY3xURA6_3PSnkEj9KJTUvott43EWP")
-            tunnel = ngrok.connect(API_BASE_URL, autotoken="2WWKkSig9YblMixh3X5FY3xURA6_3PSnkEj9KJTUvott43EWP", domain=STATIC_PUBLIC_URL)
+            tunnel = ngrok.connect(API_BASE_URL, autotoken="2WWKkSig9YblMixh3X5FY3xURA6_3PSnkEj9KJTUvott43EWP")#, domain=STATIC_PUBLIC_URL)
             #print(tunnel.public_url)
     
 
