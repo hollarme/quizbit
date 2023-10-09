@@ -3,12 +3,14 @@ import time
 import requests
 import streamlit as st
 import streamlit.components.v1 as components
-
+from pyngrok import ngrok
 # --------------------------------------------------------------------------------
 
 API_HOST='127.0.0.1'
 API_PORT=5000
 API_BASE_URL=f'http://{API_HOST}:{API_PORT}'
+
+STATIC_PUBLIC_URL = 'expert-skink-only.ngrok-free.app'
 
 # Session State variables:
 state = st.session_state
@@ -30,6 +32,12 @@ def main():
 
             import subprocess
             import threading
+            
+            ngrok.kill()
+            ngrok.set_auth_token("2WWKkSig9YblMixh3X5FY3xURA6_3PSnkEj9KJTUvott43EWP")
+            tunnel = ngrok.connect(addr=API_BASE_URL, domain=STATIC_PUBLIC_URL)
+            print(tunnel.public_url)
+    
 
             def run(job):
                 print (f"\nRunning job: {job}\n")
@@ -64,6 +72,8 @@ def main():
         with c4:
             if st.button('🔥 Shutdown LRP'):
                 requests.get(f'{API_BASE_URL}/shutdown')
+                ngrok.disconnect(public_url=STATIC_PUBLIC_URL)
+                ngrok.kill()
                 state.API_STARTED = False
                 st.experimental_rerun()
 
