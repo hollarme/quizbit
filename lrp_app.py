@@ -34,10 +34,10 @@ def main():
             import subprocess
             import threading
             
-            ngrok.kill()
+            #ngrok.kill()
             #ngrok.set_auth_token("2WWKkSig9YblMixh3X5FY3xURA6_3PSnkEj9KJTUvott43EWP")
             tunnel = ngrok.connect(API_BASE_URL, autotoken="2WWKkSig9YblMixh3X5FY3xURA6_3PSnkEj9KJTUvott43EWP")#, domain=STATIC_PUBLIC_URL)
-            print(tunnel.url())
+            print(tunnel.url(), tunnel.forwards_to())
     
 
             def run(job):
@@ -73,7 +73,7 @@ def main():
         with c4:
             if st.button('🔥 Shutdown LRP'):
                 requests.get(f'{API_BASE_URL}/shutdown')
-                ngrok.disconnect(STATIC_PUBLIC_URL)
+                ngrok.disconnect()
                 #ngrok.kill()
                 state.API_STARTED = False
                 st.experimental_rerun()
