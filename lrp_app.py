@@ -34,7 +34,7 @@ def main():
             import threading
             
             ngrok.kill()
-            ngrok.set_auth_token("2WWKkSig9YblMixh3X5FY3xURA6_3PSnkEj9KJTUvott43EWP")
+            #ngrok.set_auth_token("2WWKkSig9YblMixh3X5FY3xURA6_3PSnkEj9KJTUvott43EWP")
             tunnel = ngrok.connect(addr=API_BASE_URL, domain=STATIC_PUBLIC_URL)
             print(tunnel.public_url)
     
